@@ -1,0 +1,21 @@
+Package: EpsonView
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 0.1.7.9000
+Author: kazuo fujimoto
+Maintainer: The package maintainer <kazuo.fujimoto2007@gmail.com>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+Imports:
+  readr,
+  magrittr,
+  dplyr,
+  stringr
+RoxygenNote: 7.0.2
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

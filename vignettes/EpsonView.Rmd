@@ -1,0 +1,35 @@
+---
+title: "EpsonView"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{EpsonView}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(testepson)
+library(magrittr)
+library(readr)
+library(dplyr)
+```
+
+```{r message=FALSE}
+res.EV <- EpsonView_data("../inst/extdata/20191027100322.csv","test2")
+#res.EV %>% str()
+```
+
+```{r}
+res.EV$base
+#res.EV$Graph
+res.EV$Lap
+#res.EV$GPS
+```
+
