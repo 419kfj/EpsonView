@@ -1,4 +1,4 @@
-#' Convert backup data to dataframe list
+#' Convert backup data to dataframe list.
 #' @param fname CSV file name
 #' @param runmemo memo to add dataframe
 NeoRun_data <- function(fname,runmemo=NULL){
@@ -6,7 +6,7 @@ NeoRun_data <- function(fname,runmemo=NULL){
 #  library(readr)
 #  library(stringr)
 
-  ## Read CSV data from Backup fname="~/Dropbox/RStudio/RunNeorun/20180401-20180401.csv"
+## Read CSV data from Backup fname="~/Dropbox/RStudio/RunNeorun/20180401-20180401.csv"
   .d <- readr::read_lines(fname,locale=readr::locale(encoding="CP932"))
   EV <- ifelse(.d[1]=="[[EpsonView]]",1,0)
   tag <- substr(stringr::str_split(fname,"/")[[1]][length(stringr::str_split(fname,"/")[[1]])],1,8)
@@ -68,7 +68,7 @@ NeoRun_data <- function(fname,runmemo=NULL){
   for(i in start:end) cmd <- paste0(cmd,".d[",i,"],")
   cmd
   Gpsall <- eval(parse(text=paste0("paste0(",cmd,"NULL)")))
-  Gpsall %>%stringr::str_split("Gps") -> GPSstring
+  Gpsall %>% stringr::str_split("Gps") -> GPSstring
 
   ## GPS Time
   GPSstring[[1]][2] %>% stringr::str_split(",") -> Gpstime.0
@@ -82,27 +82,27 @@ NeoRun_data <- function(fname,runmemo=NULL){
   Gtime %>% parse_time() -> GPSTime
 
   ## GpsLatitude   3
-  GPSstring[[1]][3] %>%stringr::str_split(",") -> Gps_tmp
+  GPSstring[[1]][3] %>% stringr::str_split(",") -> Gps_tmp
 stringr::str_split(Gps_tmp[[1]][2],";") %>% unlist() %>% as.numeric() -> GPSlatitude
 
   ## GpsLongitude  4
-  GPSstring[[1]][4] %>%stringr::str_split(",") -> Gps_tmp
+  GPSstring[[1]][4] %>% stringr::str_split(",") -> Gps_tmp
 stringr::str_split(Gps_tmp[[1]][2],";") %>% unlist() %>% as.numeric() -> GPSLongitude
 
   # GpsAltitude   5
-  GPSstring[[1]][5] %>%stringr::str_split(",") -> Gps_tmp
+  GPSstring[[1]][5] %>% stringr::str_split(",") -> Gps_tmp
 stringr::str_split(Gps_tmp[[1]][2],";") %>% unlist() %>% as.numeric() -> GPSAltitude
 
   # GpsDirection  6
-  GPSstring[[1]][6] %>%stringr::str_split(",") -> Gps_tmp
+  GPSstring[[1]][6] %>% stringr::str_split(",") -> Gps_tmp
 stringr::str_split(Gps_tmp[[1]][2],";") %>% unlist() %>% as.numeric() -> GPSDirection
 
   ## GPSSpeed / 7
-  GPSstring[[1]][7] %>%stringr::str_split(",") -> Gps_tmp
+  GPSstring[[1]][7] %>% stringr::str_split(",") -> Gps_tmp
 stringr::str_split(Gps_tmp[[1]][2],";") %>% unlist() %>% as.numeric() -> GPSSpeed
 
   # GpsStatus     8
-  GPSstring[[1]][8] %>%stringr::str_split(",") -> Gps_tmp
+  GPSstring[[1]][8] %>% stringr::str_split(",") -> Gps_tmp
 stringr::str_split(Gps_tmp[[1]][2],";") %>% unlist() %>% as.numeric() -> GPSStatus
 
   GPS <- data.frame(GPSTime,GPSlatitude,GPSLongitude,GPSAltitude,GPSDirection,
@@ -120,7 +120,7 @@ stringr::str_split(Gps_tmp[[1]][2],";") %>% unlist() %>% as.numeric() -> GPSStat
 }
 
 ## 同じモジュールを使う 内部的に一行目で判定
-#' Alian of NeoRun as EpsonView
+#' Alias of NeoRun as EpsonView.
 EpsonView_data <- NeoRun_data
 
 ####
@@ -140,7 +140,7 @@ lap_table <- function(fname){
 #' @param .d EpsonView_data object
 lap_table0 <- function(.d){# .d は、NeoRun_data/EpsonView_data オブジェクト$Lap
   # .d <- res$Lap
-  #  .d <- .dd$Lap
+  # .d <- .dd$Lap
 
   names(.d)[1:18] <- c("No.","EndPoint","Time",
                        "距離","カロリー","平均ペース",
@@ -204,8 +204,8 @@ sec2HMS <- function(sec){
 }
 
 #' @examples
-#' testepson::NeoRun_data("../EpsonView/inst/extdata/20170801-20170801.csv","test")
+#' EpsonView::NeoRun_data("../EpsonView/inst/extdata/20170801-20170801.csv","test")
 #
 #' @examples
-#' testepson::EpsonView_data("../EpsonView/inst/extdata/20191027100322","test2")
+#' EpsonView::EpsonView_data("../EpsonView/inst/extdata/20191027100322","test2")
 #'

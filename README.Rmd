@@ -1,0 +1,68 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# EpsonView
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+EPSON のSF810 がEpsonView/NeoRunにuploadしたデータのbackup形式を分析用のdataframeに変換するツールです。
+
+- res.EV$Lap ラップに要約されたデータ
+- res.EV$Graph グラフ描画用に計算されたデータ
+- res.EV%GPS GPSの生データ
+
+## Installation
+
+インストールは、Githubから行います。 [GitHub](https://github.com/) :
+
+``` r
+# install.packages("devtools")
+devtools::install_github("419kfj/EpsonView")
+```
+## Example
+
+- EPSONView_data: EPSON View からCSVをexportします。https://view.epson.com/portal/ja/help/pc-export_gpx?type=help&device=pc&lang=ja
+- NeoRunから、backup形式でダウンロードしたファイル（csv）を入力としても同様にRのデータフレームに変換します。
+
+## Package load
+
+```{r example}
+library(EpsonView)
+library(tidyverse)
+```
+
+## サンプルデータを入力にしてresult（res.EV）を得る
+```{r message = FALSE}
+fname <- "inst/extdata/20191027100322.csv"
+res.EV <-  EpsonView_data(fname)
+```
+
+## EVのresultの例　Lapデータ 
+```{r}
+res.EV$base # Data Description
+names(res.EV$Lap) # 要約されたLapデータ
+nrow(res.EV$Lap)
+res.EV$Lap
+```
+
+## GPS data
+```{r}
+names(res.EV$Graph) # GPS data
+nrow(res.EV$Graph)
+summary(res.EV$Graph)
+res.EV$GPS %>% head()
+res.EV$GPS %>% tail()
+```

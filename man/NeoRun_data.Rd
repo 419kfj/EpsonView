@@ -2,7 +2,7 @@
 % Please edit documentation in R/NeoRun.R
 \name{NeoRun_data}
 \alias{NeoRun_data}
-\title{Convert backup data to dataframe list}
+\title{Convert backup data to dataframe list.}
 \usage{
 NeoRun_data(fname, runmemo = NULL)
 }
@@ -12,5 +12,5 @@ NeoRun_data(fname, runmemo = NULL)
 \item{runmemo}{memo to add dataframe}
 }
 \description{
-Convert backup data to dataframe list
+Convert backup data to dataframe list.
 }

@@ -2,10 +2,10 @@
 % Please edit documentation in R/NeoRun.R
 \name{EpsonView_data}
 \alias{EpsonView_data}
-\title{Alian of NeoRun as EpsonView}
+\title{Alias of NeoRun as EpsonView.}
 \usage{
 EpsonView_data(fname, runmemo = NULL)
 }
 \description{
-Alian of NeoRun as EpsonView
+Alias of NeoRun as EpsonView.
 }
