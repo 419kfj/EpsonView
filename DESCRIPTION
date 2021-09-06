@@ -3,9 +3,9 @@ Type: Package
 Title: Get data from EPSON GPS watch
 Version: 0.1.7.9000
 Author: kazuo fujimoto
-Maintainer: The package maintainer <kazuo.fujimoto2007@gmail.com>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Maintainer: kazuo fujimoto <kazuo.fujimoto2007@gmail.com>
+Description: Get data from EPSON GPS watch.
+    It include both summary and GPS datail data.
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
