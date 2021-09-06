@@ -1,6 +1,6 @@
 Package: EpsonView
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Get data from EPSON GPS watch
 Version: 0.1.7.9000
 Author: kazuo fujimoto
 Maintainer: The package maintainer <kazuo.fujimoto2007@gmail.com>
